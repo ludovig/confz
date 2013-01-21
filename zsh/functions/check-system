@@ -1,0 +1,29 @@
+#─────────────────────────────────────────────────────────────────
+# Check system and setup global variables accordingly
+#
+# Author:  Ludovic Vigouroux <ludo@mundoludo.fr>
+# Created: 2012-03-11
+#─────────────────────────────────────────────────────────────────
+BSD=false
+UBUNTU=false
+DARWIN=false
+# What is my system?
+if [[ $OSTYPE == darwin* ]]; then
+  BSD=true
+  DARWIN=true
+  # use gnu commands in cross-platform scripts
+  alias ln=gln
+  alias mkdir=gmkdir
+  alias chmod=gchmod
+  alias chown=gchown
+  alias chgrp=gchgrp
+  alias touch=gtouch
+  alias stat=gstat
+  alias sed=gsed
+  share_base=/Users/Shared
+else
+  uname -a | grep -q Ubuntu && UBUNTU=true
+  share_base=/home
+fi
+
+# vim: set filetype=zsh:

@@ -1,0 +1,9 @@
+# Use modern completion system
+autoload -Uz compinit
+compinit
+
+# auto-fu
+zstyle ':auto-fu:highlight' completion fg=black,bold
+zstyle ':auto-fu:highlight' completion/one fg=white,bold,underline
+zstyle ':auto-fu:var' track-keymap-skip opp
+zstyle ':auto-fu:var' autoable-function/skiplbuffers '([a-z])'

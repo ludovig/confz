@@ -1,0 +1,33 @@
+#───────────────────────────────────────────────────────────────────────
+# History
+#───────────────────────────────────────────────────────────────────────
+HISTFILE=~/.zshhistory
+# size of history file
+HISTSIZE=50000
+# maximum history events to save
+SAVEHIST=50000
+
+#───────────────────────────────────────────────────────────────────────
+# Report time
+#───────────────────────────────────────────────────────────────────────
+#show time report process on each command with format below
+REPORTTIME=1
+#process/time elapsed/user cpu/system cpu/percentage cpu/max memory/input/output
+TIMEFMT="%J %*Et %*Uu %*Sk %P %MKb %I/%O"
+
+#───────────────────────────────────────────────────────────────────────
+# Security
+#───────────────────────────────────────────────────────────────────────
+#watch all connections
+watch=all
+
+# do not allow everyone but me to read, write or execute newly created files
+umask 077
+
+#───────────────────────────────────────────────────────────────────────
+# global environnement parameters
+#───────────────────────────────────────────────────────────────────────
+export EDITOR=vim
+export PAGER=/usr/bin/less
+export SVN_EDITOR=vim
+[[ -z $TMUX ]] && export TERM=rxvt-unicode || export TERM=screen-256color

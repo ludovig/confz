@@ -1,0 +1,17 @@
+#──────────────────┐
+# shell parameters │
+#──────────────────┘
+
+# GNU Colors
+[[ $OSTYPE == darwin* ]] && dircolors=gdircolors || dircolors=dircolors
+[ -f ~/.dircolors ] && eval $($dircolors -b ~/.dircolors)
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+export TERM=screen
+
+# See if we can use colors.
+autoload -U colors zsh/terminfo
+colors
+
+# local
+[[ -f ~/.zshenv_local ]] && . ~/.zshenv_local

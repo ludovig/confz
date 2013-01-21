@@ -1,0 +1,69 @@
+# solarized oolors
+eval PR_BASE03='%{${fg[black]}%}'
+eval PR_BASE02='%b%{${fg[black]}%}'
+eval PR_BASE01='%B%{${fg[green]}%}'
+eval PR_BASE00='%B%{${fg[yellow]}%}'
+eval PR_BASE0='%B%{${fg[blue]}%}'
+eval PR_BASE1='%B%{${fg[cyan]}%}'
+eval PR_BASE2='%b%{${fg[white]}%}'
+eval PR_BASE3='%B%{${fg[white]}%}'
+eval PR_YELLOW='%b%{${fg[yellow]}%}'
+eval PR_ORANGE='%B%{${fg[red]}%}'
+eval PR_RED='%b%{${fg[red]}%}'
+eval PR_MAGENTA='%b%{${fg[magenta]}%}'
+eval PR_VIOLET='%B%{${fg[magenta]}%}'
+eval PR_BLUE='%b%{${fg[blue]}%}'
+eval PR_CYAN='%b%{${fg[cyan]}%}'
+eval PR_GREEN='%b%{${fg[green]}%}'
+eval PR_DEFAULT='%b%{${fg[default]}%}'
+
+# See if we can use extended characters to look nicer.
+
+typeset -A altchar
+set -A altchar ${(s..)terminfo[acsc]}
+PR_SET_CHARSET="%{$terminfo[enacs]%}"
+PR_SHIFT_IN="%{$terminfo[smacs]%}"
+PR_SHIFT_OUT="%{$terminfo[rmacs]%}"
+PR_HBAR=${altchar[q]:--}
+PR_ULCORNER=${altchar[l]:--}
+PR_LLCORNER=${altchar[m]:--}
+PR_LRCORNER=${altchar[j]:--}
+PR_URCORNER=${altchar[k]:--}
+
+#The time
+PR_TIME="%(t.Ding.%(30t.Dong!.%D{%H:%M}))"
+function precmd {
+    local TERMWIDTH
+    (( TERMWIDTH = ${COLUMNS} - 2 ))
+    ###
+    # Truncate the path if it's too long.
+
+    PR_FILLBAR=""
+    PR_PWDLEN=""
+
+    #local promptsize=${#${(%):%n@%m:(%D{%H:%M})}}
+    #local pwdsize=${#${(%):-%~}}
+		local promptsize=${#${(%):-%n@%m: (%(t.Ding.%(30t.Dong!.%D{%H:%M})))}}
+    local pwdsize=${#${(%):-%~}}
+
+
+    if [[ "$promptsize + $pwdsize" -gt $TERMWIDTH ]]; then
+        ((PR_PWDLEN=$TERMWIDTH - $promptsize))
+    else
+       PR_FILLBAR="\${(l.(($TERMWIDTH - ($promptsize + $pwdsize) - 7))..${PR_HBAR}.)}"
+    fi
+
+    ###
+    # Finally, the prompt.
+    #
+}
+
+function setprompt {
+    PROMPT='$PR_BASE0%(!.%SROOT%s.%n)$PR_BASE0@${PR_BASE0}%m$PR_BASE0:\
+${PR_BLUE}%$PR_PWDLEN<…<%~%<<\
+${PR_BASE2}$PR_SHIFT_IN${(e)PR_FILLBAR}$PR_SHIFT_OUT($PR_TIME)
+${PR_COLOR}%(2L.>.>) $PR_DEFAULT'
+RPROMPT='%(?..${PR_RED}(%?%) )$PR_DEFAULT'
+}
+
+setprompt

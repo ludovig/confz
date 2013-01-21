@@ -1,0 +1,64 @@
+function colorviswitch() {
+	vimode="${${KEYMAP/vicmd/ cmd}/(afu|main|viins)/}"
+	if [[ -z $vimode ]]; then
+		prompt_color='%b%{${fg_bold[yellow]}%}'
+	else
+		prompt_color='%b%{${fg[blue]}%}'
+	fi
+	eval PR_COLOR=$prompt_color
+	[[ $KEYMAP != "main" ]] && zle reset-prompt
+}
+
+# auto-fu
+auto_fu=$HOME/.zsh/auto-fu
+if [[ -f $auto_fu ]]; then
+	mainmap=afu
+
+	# load auto-fu
+  . $auto_fu; auto-fu-install;
+  zle-line-init () {
+		auto-fu-init;
+	}; zle -N zle-line-init
+
+	function auto-fu-vi-zle-keymap-select {
+		colorviswitch
+		afu-track-keymap "$@" afu-adjust-main-keymap
+	}
+
+	# vim editing mode in prompt
+  zle -N zle-keymap-select auto-fu-vi-zle-keymap-select
+
+	# vim switch
+	bindkey -M $mainmap ❤  afu+vi-cmd-mode
+	bindkey -M $mainmap ♥  afu+vi-cmd-mode
+
+else
+	# fallback to viins
+	mainmap=viins
+
+	# vim switch
+	bindkey -v
+	bindkey ♥ vi-cmd-mode
+	bindkey ❤ vi-cmd-mode
+
+	# vim editing mode in prompt
+  zle -N zle-keymap-select colorviswitch
+fi
+
+zle-line-finish () {
+	# redraw prompt when finished in vicmd
+	if [[ afu = $KEYMAP ]]; then
+		zle reset-prompt
+	fi
+}; zle -N zle-line-finish
+
+# history
+bindkey -M $mainmap 'é' history-beginning-search-backward
+bindkey -M $mainmap 'è' history-beginning-search-forward
+bindkey -M $mainmap 'É' history-search-backward
+bindkey -M $mainmap 'È' history-search-forward
+bindkey -M vicmd '/' history-incremental-search-backward
+bindkey -M vicmd '?' history-incremental-search-forward
+
+# modifying text
+bindkey -M $mainmap '^W' vi-backward-kill-word

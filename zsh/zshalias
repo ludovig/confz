@@ -1,0 +1,49 @@
+# shortcut builtins
+alias g='cd'
+alias q='bye'
+alias d='dirs -v'
+alias h='history -d'
+alias m='mv -v'
+alias c='cp -v'
+alias r='rm -v'
+alias rh='fc -RI'
+alias rc='. ~/.zshrc'
+alias mdir='mkdir -pv'
+alias ln='ln -v'
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+
+# shortcut commands
+ls='ls --color --group-directories-first --block-size=K --time-style="+%d/%m/%y %k:%M" -SlhX'
+if [[ $OSTYPE == linux* ]]; then
+    alias l=$ls
+    alias lc='ls --color'
+    # java and awesome
+    alias netbeans='wmname LG3D && netbeans-6.8 -J-Dawt.useSystemAAFontSettings=on'
+    alias freemind='wmname LG3D && freemind -J-Dawt.useSystemAAFontSettings=on'
+elif [[ $OSTYPE == darwin* ]]; then
+    alias lc='ls -G'
+    alias l="g$ls"
+fi
+alias e='vim'
+alias ev='vim ~/.vimrc'
+alias ez='vim ~/.zshrc && rc'
+alias v=$PAGER
+alias -g V="| $PAGER"
+alias btar='tar xvjf'
+alias gtar='tar xvzf'
+alias sf='php symfony'
+alias sfack='ack --ignore-dir=doc --ignore-dir=cache --ignore-dir=log --type=nosql'
+alias gdb='gdb -q'
+alias dus="du -shc *(/)"
+alias df='df -h'
+
+# unison and ssh
+alias unison=/usr/bin/unison-2.27
+
+# light urxvt
+lurxvt=urxvtc
+
+# artificial intelligence
+alias ni='echo ni!'

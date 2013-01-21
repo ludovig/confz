@@ -1,0 +1,37 @@
+# solarized colors
+
+BASE03=${fg_bold[black]}
+BASE02=${fg_no_bold[black]}
+BASE01=${fg_bold[green]}
+BASE00=${fg_bold[yellow]}
+BASE0=${fg_bold[blue]}
+BASE1=${fg_bold[cyan]}
+BASE2=${fg_no_bold[white]}
+BASE3=${fg_bold[white]}
+YELLOW=${fg_no_bold[yellow]}
+ORANGE=${fg_bold[red]}
+RED=${fg_no_bold[red]}
+MAGENTA=${fg_no_bold[magenta]}
+VIOLET=${fg_bold[magenta]}
+BLUE=${fg_no_bold[blue]}
+CYAN=${fg_no_bold[cyan]}
+GREEN=${fg_no_bold[green]}
+DEFAULT=${fg_no_bold[default]}
+
+print $BASE03 base03 bold black
+print $BASE02 base02 black
+print $BASE01 base01 bold green
+print $BASE00 base00 bold yellow
+print $BASE0 base0 bold blue
+print $BASE1 base1 bold cyan
+print $BASE2 base2 white
+print $BASE3 base3 bold white
+print $YELLOW yellow yellow
+print $ORANGE orange bold red
+print $RED red red
+print $MAGENTA magenta magenta
+print $VIOLET violet bold magenta
+print $BLUE blue blue
+print $CYAN cyan cyan
+print $GREEN green green
+print $DEFAULT default default

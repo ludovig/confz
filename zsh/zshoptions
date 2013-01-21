@@ -1,0 +1,46 @@
+# Changing directories
+setopt autocd              # implicit cd when command is a directory
+setopt autopushd           # automatically push directories to the stack
+setopt cdablevars          # cd to a bookmark is possible without adding ~
+setopt pushdignoredups     # don't push multiple copies of a directory in stack
+setopt pushdminus          # swap meaning of + and - when cd in stack
+
+# Completion
+setopt autonamedirs        # all directories parameters available as bookmarks
+setopt autolist            # automatically show list of choices on first request
+setopt automenu            # and switch between choices on second request
+setopt nolistambiguous     # unambiguous completion and show list in one request
+setopt listrowsfirst       # order list by row instead of column
+
+# Expansion and Globbing
+setopt extendedglob        # use of #, ~, ^ in globbing
+
+# History
+setopt extendedhistory     # record command date and duration
+setopt nohistbeep          # no beep on end of history
+setopt histfindnodups      # do not show duplicate commands on a search
+setopt histignorealldups   # remove from history identical commands
+setopt histignorespace     # do not record lines starting with a space
+setopt histsavenodups      # don't save more than once identical commands
+setopt histreduceblanks    # do not save superfluous blanks in history
+#setopt histverify          # prompt for confirmation when using history
+#setopt sharehistory        # share history between shells
+setopt incappendhistory    # immediately append command to history file
+
+# Input/Output
+setopt noclobber           # do not allow to truncate an existing file on a redirection
+setopt correct             # offer correction on entries
+setopt interactivecomments # comments on interactive shell
+setopt noprintexitvalue    # do not show error code on a program fail
+setopt normstarsilent      # ask validation on a rm *
+
+# Job Control
+setopt nohup               # no hangup for background processes when exiting
+setopt checkjobs           # report jobs status on exit
+
+# Prompting
+setopt prompt_subst        # dynamic prompt
+
+# Shell Emulation
+setopt csh_null_glob       # silently remove non matching patterns
+
