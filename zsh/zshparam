@@ -31,3 +31,9 @@ export EDITOR=vim
 export PAGER=/usr/bin/less
 export SVN_EDITOR=vim
 [[ -z $TMUX ]] && export TERM=rxvt-unicode || export TERM=screen-256color
+
+#───────────────────────────────────────────────────────────────────────
+# local environnement parameters
+#───────────────────────────────────────────────────────────────────────
+[[ -f ~/.zshbookmarks ]] && . ~/.zshbookmarks
+[[ -f ~/.zshpaths ]] && . ~/.zshpaths
