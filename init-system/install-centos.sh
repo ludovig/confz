@@ -122,6 +122,7 @@ if [[ ! -d Python-2.7.4 ]]; then
 	./configure && make && make install || exit 1
 	cd ..
 fi
+export PATH=/usr/local/bin:$PATH
 
 # cmake
 if [[ ! -d cmake-2.8.10.2 ]]; then
