@@ -1,0 +1,10 @@
+#!/bin/zsh
+background=$HOME/.xplanet/images/stars_earthmoon.png
+output=$HOME/.xplanet/images/earthmoon.png
+config_background=$HOME/.xplanet/config/star
+starmap=$HOME/.xplanet/starmaps/tycho-2
+geometry=$(xrandr | awk '/*/ {print $1}')
+xplanet -separation moon:1 -radius 1 -fov 180 -base_magnitude 11 -glare 0 -starmap BSC -config $config_background -num_times 1 -marker_file brightStars -geometry $geometry -output $background -arc_file constellations -rotate 45
+xplanet -separation moon:0,017 -radius 25 -range 8750 -transparency -num_times 1 -background $background -geometry  $geometry -output $output -rotate 45
+#xplanet -radius 1 -fov 180 -base_magnitude 11 -glare 0 -starmap BSC -config $config_background -num_times 1 -marker_file brightStars -geometry $geometry -output $background -arc_file constellations -north path -path_relative_to earth
+#xplanet -separation moon:0,017 -radius 25 -range 8750 -transparency -num_times 1 -background $background -geometry  $geometry -output $output -north path -path_relative_to earth

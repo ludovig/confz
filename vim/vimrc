@@ -1,0 +1,196 @@
+" We want Vim
+set nocompatible
+
+
+""" Vundle (Plugin Manager)
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+"
+" My Bundles here:
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'AutoComplPop'
+Bundle 'shawncplus/phpcomplete.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'mikewest/vimroom'
+Bundle 'taxilian/VimDebugger'
+Bundle 'mileszs/ack.vim'
+
+filetype plugin indent on      " required!
+
+let g:ackprg="ack --ignore-dir=doc --ignore-dir=cache --ignore-dir=log --type=nosql -H --nocolor --nogroup --column"
+""" Options
+" Colors
+syntax on
+set background=dark
+colorscheme solarized
+
+" Unicode
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Show some informations
+set ruler
+set laststatus=2
+set number
+
+" Search
+set incsearch
+set nohlsearch
+set wrapscan
+set ignorecase
+set smartcase
+
+" Indentation
+set tabstop=8
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set ai
+set smartindent
+
+" WildMode
+set wildmode=list:longest,list:full
+
+" Some more tuning
+set backspace=start,indent,eol " Normal delete behavior
+set mousehide                  " No Mouse on screen
+set scrolljump=5               " Jump 5 lines when running out of the screen
+set scrolloff=3                " Indicate jump out of the screen when 3 lines before end of the screen
+set hidden                     " allow not saved background buffer
+set showcmd                    " display incomplete commands
+set guioptions-=T
+set guioptions-=m
+"set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menu,menuone,preview
+let mapleader = "\<Space>" " Space is so accessible
+
+
+""" Mapping
+inoremap ❤ <Esc>
+vnoremap ❤ <Esc>
+cnoremap ❤ <Esc>
+inoremap ♥ <Esc>
+vnoremap ♥ <Esc>
+cnoremap ♥ <Esc>
+nnoremap <Leader>c :
+" Pager
+nnoremap ♥ <C-d>
+nnoremap è <C-e>;
+nnoremap é <C-y>;
+" Tag navigation
+nnoremap <Tab> <C-i>
+nnoremap <S-Tab> <C-o>
+nnoremap <CR> <C-]>
+"noremap <Return> <C-]>
+" Save and Quit commands
+nnoremap <Leader>j :w<CR>
+nnoremap <Leader>s :w<CR>
+nnoremap <Leader>q :q<CR>
+" Completion commands
+inoremap <expr> 1 pumvisible() ? "\<C-y>" : "1"
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "<S-Tab>"
+inoremap <expr> 0 pumvisible() ? "<C-e>" : "0"
+let g:SnipeMateAllowOmniTab = 1
+
+" Windows
+nnoremap <Leader>h <C-W>h
+nnoremap <Leader>k <C-W>k
+nnoremap <Leader>l <C-W>l
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+""" Abbreviations
+iab since @since <C-R>=strftime("%Y-%m-%d")<CR>
+iab aut @author Ludovic Vigouroux <ludovicv@theodo.fr>
+
+
+""" Auto Commands
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+
+"Trim the blank off an end of line
+autocmd BufWritePost * :%s/\s\+$//e
+
+" Highlight current line in insert mode
+autocmd InsertLeave * se nocul
+autocmd InsertEnter * se cul
+
+" Reload vimrc after writing it
+autocmd BufWritePost .vimrc source %
+
+" For all text files set 'textwidth' to 80 characters.
+autocmd FileType text setlocal textwidth=80
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+  \ if line("'\"") > 1 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
+
+" Convenient command to see the difference between the current buffer and the
+" file it was loaded from, thus the changes you made.
+" Only define it when not defined already.
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+                  \ | wincmd p | diffthis
+endif
+
+
+""" Fuzzy Finder
+nnoremap <silent> <Leader>f :FufFile **/<CR>
+nnoremap <silent> <Leader>i :FufFile <CR>
+nnoremap <silent> <Leader>a :FufFileWithCurrentBufferDir<CR>
+nnoremap <silent> <Leader>e :FufMruFile<CR>
+nnoremap <silent> <Leader>b :FufBuffer<CR>
+nnoremap <silent> <Leader>t :FufTag<CR>
+nnoremap <silent> <Leader>m :FufChangeList<CR>
+nnoremap <silent> <Leader>w :FufJumpList<CR>
+nnoremap <silent> <Leader>u :FufLine<CR>
+nnoremap <silent> <Leader>g :FufMruCmd<CR>
+nnoremap <silent> <Leader>r :FufTagWithCursorWord<CR>
+nnoremap <silent> <Leader>d :FufDir<CR>
+nnoremap <silent> <Leader>y :FufDirWithCurrentBufferDir<CR>
+let g:fuf_modesDisable = []
+"let g:fuf_ignoreCase = 0
+let g:fuf_maxMenuWidth = 120
+let g:fuf_keyOpenVsplit = "<CR>"
+let g:fuf_keyOpen = "<Leader>"
+
+""" acp
+let g:acp_behaviorKeywordLength = 2
+"let g:acp_behaviorSnipmateLength = 2
+
+""" Local projects
+if filereadable(expand('~/.vim/projects.vim'))
+  source ~/.vim/projects.vim
+endif
+
+""" FileType options
+autocmd FileType *sh setlocal noexpandtab tabstop=2 softtabstop=0 shiftwidth=2
+
+""" Symfony project tags
+function! Tags(withlib)
+  if a:withlib == 1
+    let exclude = ""
+  else
+    let exclude = "--exclude=".getcwd()."/lib/vendor --append "
+  endif
+  let result = system('ctags -R -f .vimtags --exclude="*.js" --exclude=cache --exclude=log --totals '. exclude . getcwd())
+  echo result
+endfunction
+
+:com! InitTagsSfAll call Tags(1) | set tags=.vimtags
+:com! InitTagsSf call Tags(0) | set tags=.vimtags
