@@ -30,7 +30,11 @@ umask 077
 export EDITOR=vim
 export PAGER=/usr/bin/less
 export SVN_EDITOR=vim
-[[ -z $TMUX ]] && export TERM=rxvt-unicode || export TERM=screen-256color
+if [[ $OSTYPE == darwin* ]]; then
+	TERM=xterm-256color
+else
+  [[ -z $TMUX ]] && export TERM=rxvt-unicode || export TERM=screen-256color
+fi
 
 #───────────────────────────────────────────────────────────────────────
 # local environnement parameters
