@@ -26,7 +26,7 @@ xset m 30/10 4
 ##xsetroot -cursor_name left_ptr
 
 ## Disposition
-xkbcomp -w 0 -R/usr/share/X11/xkb -I/$HOME/.xkb/ $HOME/.xkb/jekalitf $DISPLAY
+xkbcomp -w 0 -R/usr/share/X11/xkb -I/$HOME/.xkb/ $HOME/.xkb/vimboard $DISPLAY
 
 ### programs automatically launched
 ##[[ -d $HOME/atelier/clavier/xkeyvents ]] && $HOME/atelier/clavier/xkeyvents/logkeys.py
