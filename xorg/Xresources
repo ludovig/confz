@@ -77,7 +77,7 @@
 !! urxvt
 urxvt*scrollBar   :  false
 urxvt*saveLines   :  12000
-urxvt*borderLess  :  true
+urxvt*borderLess  :  false
 urxvt*shading :      80
 urxvt*depth       :  32
 urxvt*fading:        40
