@@ -1,0 +1,14 @@
+#!/bin/zsh
+# Default stars background
+
+[ -z $body ] && body=earth
+[ -z $geometry ] && geometry=$(xrandr | awk '/*/ {print $1}')
+[ -z $starmap ] && starmap=BSC
+[ -z $config_stars ] && config_stars=$HOME/.xplanet/config/stars
+[ -z $base_magnitude ] && base_magnitude=11
+[ -z $glare ] && glare=0
+[ -z $fov ] && fov=90
+[ -z $marker_file ] && marker_file=brightStars
+[ -z $output_background ] && output_background=$HOME/.xplanet/images/stars.png
+
+xplanet -body $body -starmap $starmap -base_magnitude $base_magnitude -glare $glare -config $config_stars -num_times 1 -fov $fov -marker_file $marker_file -geometry $geometry -output $output_background $*

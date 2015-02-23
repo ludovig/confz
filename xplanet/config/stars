@@ -1,0 +1,40 @@
+# This file contains options you might want to customize for each
+# body.  It's best to leave this file alone and modify a copy. Use the
+# -config option to tell xplanet to read your copy.
+
+[default]                       # Values in this section apply to all
+				# bodies unless overridden below.
+
+color={255,255,255}             # fallback color in case an image map
+				# isn't found
+
+draw_orbit=false                # if true, draw this body's orbit
+                                # about its primary
+
+grid=false
+grid1=6
+grid2=15
+
+magnify=1                       # draw the body as if its radius were
+				# magnified by this factor
+
+marker_color=red
+#marker_file=
+#marker_font=
+
+#max_radius_for_label=0          # don't draw a label if the body's
+				# radius in pixels is more than this
+
+#min_radius_for_label=0        # don't draw a label if the body's
+				# radius in pixels is less than this
+
+#min_radius_for_markers=40       # don't draw markers if the body's
+				# radius in pixels is less than this
+                                #
+[mercury]
+map=mercury/colorized_mercury_lowres.png
+
+[sun]
+"Sun"
+color={255,255,166}
+shade=100			# No night side!

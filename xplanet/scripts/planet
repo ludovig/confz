@@ -1,0 +1,14 @@
+#!/bin/zsh
+# Default planet rendering
+
+[ -z $body ] && body=earth
+[ -z $geometry ] && geometry=$(xrandr | awk '/*/ {print $1}')
+[ -z $glare ] && glare=0
+[ -z $background ] && background=$HOME/.xplanet/images/stars.png
+[ -z $output ] && output=$HOME/.xplanet/images/${body}.png
+[ -z $draw ] && draw=true
+
+xplanet -body $body -glare $glare -num_times 1 -background $background -geometry $geometry -output $output $*
+
+# display image as wallpaper
+$draw && feh --bg-scale $output

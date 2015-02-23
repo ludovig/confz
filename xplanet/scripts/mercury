@@ -1,0 +1,13 @@
+#!/bin/zsh
+# Mercury
+body=mercury
+mercury_radius=2439.7
+
+# retrieve this file location
+pushd "$(dirname ${0})"
+script_location=$(pwd)
+popd
+
+# load functions
+. $script_location/stars -origin earth
+. $script_location/planet -origin earth

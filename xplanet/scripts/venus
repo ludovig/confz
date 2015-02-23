@@ -1,0 +1,13 @@
+#!/bin/zsh
+# Venus
+body=venus
+venus_radius=6051.8
+
+# retrieve this file location
+pushd "$(dirname ${0})"
+script_location=$(pwd)
+popd
+
+# load functions
+. $script_location/stars -origin earth
+. $script_location/planet -origin earth
