@@ -40,6 +40,7 @@ end
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 awful.util.spawn_with_shell("unagi &")
+--awful.util.spawn_with_shell("urxvtd -q -f -o&")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvtc"
@@ -71,11 +72,12 @@ function run_once(prg,arg_string,pname,screen)
   end
 end
 
+run_once("urxvtd -q -f -o")
 run_once("gvim")
 run_once("firefox")
-run_once("xplanet", "-radius 23 -transparency --background $HOME/.xplanet/star_background.png &")
 -- run_once("xplanet", "-radius 1 -range 100 -base_magnitude 11 -starmap ~/.xplanet/tycho-2 -transparency -num_times 1 -separation moon:1 -config $HOME/.xplanet/config/star -glare 0 -output $HOME/.xplanet/images/star_background.png -geometry 1900x1200 -wait 1800& ")
--- run_once("xplanet", "-separation moon:0,017 -radius 25 -range 8750 -transparency -north orbit -background $HOME/.xplanet/images/star_background.png&")
+run_once("xplanet", "--transparency --radius 22 --background ~/.xplanet/star_background.png -longitude 20 -latitude 30 &")
+run_once("urxvtc")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
@@ -119,7 +121,7 @@ end
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awful.util.getdir("config") .. "/rc.lua" },
+   { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
    { "quit", awesome.quit }
 }
@@ -139,9 +141,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
-
--- Create a systray
--- mysystray = widget({ type = "systray" })
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -257,7 +256,7 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
+    awful.key({ modkey,           }, "b", function () mymainmenu:show() end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -309,7 +308,6 @@ clientkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
--- awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
     awful.key({ modkey,           }, "n",
         function (c)
@@ -317,7 +315,7 @@ clientkeys = awful.util.table.join(
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end),
-    awful.key({ modkey,           }, "m",
+    awful.key({ modkey,           }, "a",
         function (c)
             c.maximized_horizontal = not c.maximized_horizontal
             c.maximized_vertical   = not c.maximized_vertical
@@ -335,7 +333,8 @@ for s = 1, screen.count() do
    keynumber = math.min(9, math.max(#tags[s], keynumber));
 end
 
-tagkeys={"s", "n", "t", ";", "'", "w", "(", ")", ","}
+tagkeys={"m", "n", "t", ";", "'", "w", "(", ")", ","}
+-- tagkeys={"w", "n", "t", "à", "x", "/", ",", ".", ";"}
 for i = 1, keynumber do
     globalkeys = awful.util.table.join(globalkeys,
         awful.key({ modkey }, tagkeys[i],
@@ -396,8 +395,6 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
---      properties = { floating = true, switchtotag = true } ,
---      callback = awful.titlebar.add },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
@@ -487,6 +484,6 @@ client.connect_signal("manage", function (c, startup)
     end
 end)
 
-client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
