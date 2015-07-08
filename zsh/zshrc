@@ -27,3 +27,5 @@ function chpwd() {
 
 # artificial intelligence
 trap "print; print '$fg[red]'ouch; return" INT
+
+[[ -f ~/.keychain/$HOST-sh ]] && source ~/.keychain/$HOST-sh
