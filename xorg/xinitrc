@@ -26,6 +26,8 @@ xset m 30/10 4
 ## Keyboard disposition
 if [[ "air" == $HOST ]]; then
 	. $HOME/.xkb/scripts/load-vimboard-mac
+elif [[ "bigbox" == $HOST ]]; then
+	. $HOME/.xkb/scripts/load-vimboard-topre
 else
 	. $HOME/.xkb/scripts/load-vimboard
 fi
