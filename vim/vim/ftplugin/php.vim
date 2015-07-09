@@ -35,8 +35,8 @@ nnoremap <buffer> <Leader>n :FufLine ;function;<CR>
 setlocal expandtab
 
 " Indentation equal to 2 spaces
-setlocal shiftwidth =2
-setlocal softtabstop =2
+setlocal shiftwidth =4
+setlocal softtabstop =4
 
 " Auto indent after a {
 setlocal autoindent
@@ -61,7 +61,7 @@ setlocal makeprg=php\ -l\ %
 setlocal errorformat+=%m\ in\ %f\ on\ line\ %l
 
 "autocmd BufWritePost *.php :Phpcs
-autocmd BufWritePost *.php :silent make
+"autocmd BufWritePost *.php :silent make
 
 " Switch syntax highlighting on, if it was not
 syntax on
