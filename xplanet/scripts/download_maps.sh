@@ -4,8 +4,8 @@ cd $HOME/.xplanet/images/earth
 wget http://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_ocean_ice_2048.png -O earth.png
 wget http://eoimages.gsfc.nasa.gov/images/imagerecords/79000/79765/dnb_land_ocean_ice.2012.3600x1800.jpg 
 wget http://eoimages.gsfc.nasa.gov/images/imagerecords/73000/73934/gebco_08_rev_elev_21600x10800.png 
-convert dnb_land_ocean_ice.2012.3600x1800.jpg -size 2048x1024 night.jpg
-convert gebco_08_rev_elev_21600x10800.png -size 2048x1024 topo.png
+convert dnb_land_ocean_ice.2012.3600x1800.jpg -resize 2048x1024 night.jpg
+convert gebco_08_rev_elev_21600x10800.png -resize 2048x1024 topo.png
 wget http://solarviews.com/raw/moon/moonmap.jpg -O moon.jpg
 cd $HOME/.xplanet/images/
 wget http://www.mmedia.is/~bjj/data/io/io.jpg
