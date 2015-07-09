@@ -105,8 +105,8 @@ color={28, 82, 110}
 #map=alice_springs.png
 #night_map=alice_springs_night.png
 #mapbounds={-1.2,98.7107,-46.2,169.023}  # lat1, lon1, lat2, lon2
-night_map=earth/night.gif
-map=earth/earth.jpg
+night_map=earth/night.jpg
+map=earth/earth.png
 cloud_map=earth/clouds_2048.jpg
 #marker_file=earth
 cloud_threshold=0
@@ -115,7 +115,7 @@ draw_orbit=false
 
 min_radius_for_label=0
 
-bump_map=earth/topo.jpg
+bump_map=earth/topo.png
 bump_scale=1
 #satellite_file=iss
 

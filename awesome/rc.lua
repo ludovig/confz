@@ -39,7 +39,7 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-awful.util.spawn_with_shell("unagi &")
+awful.util.spawn_with_shell("xcompmgr &")
 --awful.util.spawn_with_shell("urxvtd -q -f -o&")
 
 -- This is used later as the default terminal and editor to run.
@@ -72,12 +72,11 @@ function run_once(prg,arg_string,pname,screen)
   end
 end
 
-run_once("urxvtd -q -f -o")
+run_once("urxvtd -q -f -o && urxvtc --loginShell")
 run_once("gvim")
 run_once("firefox")
 -- run_once("xplanet", "-radius 1 -range 100 -base_magnitude 11 -starmap ~/.xplanet/tycho-2 -transparency -num_times 1 -separation moon:1 -config $HOME/.xplanet/config/star -glare 0 -output $HOME/.xplanet/images/star_background.png -geometry 1900x1200 -wait 1800& ")
 run_once("xplanet", "--transparency --radius 22 --background ~/.xplanet/star_background.png -longitude 20 -latitude 30 &")
-run_once("urxvtc")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
