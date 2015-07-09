@@ -111,7 +111,7 @@ cloud_map=earth/clouds_2048.jpg
 #marker_file=earth
 cloud_threshold=0
 cloud_gamma=3.0
-draw_orbit=true
+draw_orbit=false
 
 min_radius_for_label=0
 
