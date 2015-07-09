@@ -304,6 +304,7 @@ fi
 
 # unagi
 if [[ ! -d unagi-0.3.3 ]]; then
+	ln -s /usr/include/libev/ev.h /usr/local/include/ev.h
 	tar xvf unagi-0.3.3.tar.gz
 	cd unagi-0.3.3
 	./configure && make && make install || exit 1
