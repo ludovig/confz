@@ -5,6 +5,7 @@ awful.rules = require("awful.rules")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
+local vicious = require("vicious")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -38,7 +39,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/theme.lua")
 awful.util.spawn_with_shell("xcompmgr &")
 --awful.util.spawn_with_shell("urxvtd -q -f -o&")
 
@@ -74,9 +75,10 @@ end
 
 run_once("urxvtd -q -f -o && urxvtc --loginShell")
 run_once("gvim")
-run_once("firefox")
+run_once("qutebrowser")
 -- run_once("xplanet", "-radius 1 -range 100 -base_magnitude 11 -starmap ~/.xplanet/tycho-2 -transparency -num_times 1 -separation moon:1 -config $HOME/.xplanet/config/star -glare 0 -output $HOME/.xplanet/images/star_background.png -geometry 1900x1200 -wait 1800& ")
-run_once("xplanet", "--transparency --radius 22 --background ~/.xplanet/star_background.png -longitude 20 -latitude 30 &")
+--run_once("xplanet", "--transparency --radius 22 --background ~/.xplanet/star_background.png -longitude 20 -latitude 30 &")
+run_once("xplanet", "--transparency --projection rectangular -longitude 2 -latitude 50 &")
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
@@ -107,7 +109,7 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "garage", "atelier", "dehors", "boîte aux lettres", "bureau", "table à dessin", "salon", "voisins", "remise" },
+    names = { "m", "n", "t", "g", "w", "'", ",", ".", ";" },
     layout = { layouts[3], layouts[2], layouts[2], layouts[2], layouts[2], layouts[3], layouts[3], layouts[3], layouts[3] }
     }
 for s = 1, screen.count() do
@@ -136,6 +138,13 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
+-- {{{ Vicious
+datewidget = wibox.widget.textbox()
+vicious.register(datewidget, vicious.widgets.date, "%b %d, %R", 60)
+-- Initialize widget
+cpuwidget = wibox.widget.textbox()
+-- Register widget
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1%")
 
 -- {{{ Wibox
 -- Create a textclock widget
@@ -207,7 +216,7 @@ for s = 1, screen.count() do
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "bottom", screen = s })
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
@@ -218,6 +227,7 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(cpuwidget)
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
 
@@ -332,7 +342,7 @@ for s = 1, screen.count() do
    keynumber = math.min(9, math.max(#tags[s], keynumber));
 end
 
-tagkeys={"m", "n", "t", ";", "'", "w", "(", ")", ","}
+tagkeys={ "m", "n", "t", "g", "w", "'", ",", ".", ";" }
 -- tagkeys={"w", "n", "t", "à", "x", "/", ",", ".", ";"}
 for i = 1, keynumber do
     globalkeys = awful.util.table.join(globalkeys,
@@ -399,7 +409,7 @@ awful.rules.rules = {
     --   properties = { tag = tags[1][2] } },
     { rule = { class = "Gvim" },
       properties = { tag = tags[1][2] } },
-    { rule = { class = "Firefox" },
+    { rule = { class = "qutebrowser" },
       properties = { tag = tags[1][3] } },
     { rule = { class = "Thunderbird" },
       properties = { tag = tags[1][4] } },

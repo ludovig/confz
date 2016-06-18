@@ -37,24 +37,23 @@
 !*fadeColor: #000000
 !*pointerColorBackground: #808080
 !*pointerColorForeground: #c0c0c0
-*cursorColor:   #eeeeee
+*cursorColor:   #EEEEEE
 
 ! urxvt
-urxvt*scrollBar   :  false
-urxvt*saveLines   :  12000
-urxvt*borderLess  :  false
-urxvt*shading :      80
-urxvt*depth       :  32
-urxvt*fading:        40
-urxvt*background :   rgba:0000/0000/0000/0000
-urxvt*foreground :   #eeeeee
-!urxvt*fadeColor :   rgba:0000/0000/0000/5555
-!urxvt*background :  rgba:0000/2b00/3600/3333
-!urxvt*transparent : true
+urxvt*scrollBar   : false
+urxvt*saveLines   : 12000
+urxvt*borderLess  : false
+urxvt*shading     : 80
+urxvt*depth       : 32
+urxvt*fading        : 80
+urxvt*fadeColor   : rgba:0000/0000/0000/0000
+urxvt*background  : rgba:1111/1111/2222/FFFF
+urxvt*foreground  : #EEEEEE
+urxvt*transparent : false
 
 !*font        : xft:Source Code Pro:antialias=true:hinting=1:hintstyle=hintfull:dpi=96:weight=180
 !*font        : xft:Anonymous Pro:antialias=true:hinting=1:hintstyle=hintfull:dpi=96:weight=200
-!*font        : xft:Inconsolata:antialias=true:hinting=1:hintstyle=hintfull:dpi=96:weight=200
-*font        :xft:Inconsolata:style=Regular:size=10:antialiasing=true
+*font        : xft:Inconsolata:antialias=true:hinting=1:hintstyle=hintfull:dpi=96:weight=200
+!*font        :xft:Inconsolata:style=Regular:size=16:antialiasing=true
 
 ! vim: set filetype=xdefaults :
