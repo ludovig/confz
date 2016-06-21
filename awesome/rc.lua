@@ -138,17 +138,58 @@ mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
--- {{{ Vicious
-datewidget = wibox.widget.textbox()
-vicious.register(datewidget, vicious.widgets.date, "%b %d, %R", 60)
+-- {{{ Widget
+textclock = awful.widget.textclock()
+vicious.register(textclock, vicious.widgets.date, "%R", 60)
+
 -- Initialize widget
-cpuwidget = wibox.widget.textbox()
+cpuwidget = awful.widget.graph()
+-- Graph properties
+cpuwidget:set_width(50)
+cpuwidget:set_background_color("#494B4F")
+cpuwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#FF5656"}, {0.5, "#88A175"}, {1, "#AECF96" }}})
 -- Register widget
-vicious.register(cpuwidget, vicious.widgets.cpu, "$1%")
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
+
+-- Initialize widget
+cputxtwidget = wibox.widget.textbox()
+-- Register widget
+vicious.register(cputxtwidget, vicious.widgets.cpu, "$1%")
+
+cpufreq = wibox.widget.textbox()
+vicious.register(cpufreq, vicious.widgets.cpufreq, function (widget, args)
+                return args[1] .. ' Mhz ' .. args[5]
+                            end, 5, 'cpu0')
+
+-- Initialize widget
+memwidget = awful.widget.progressbar()
+-- Progressbar properties
+memwidget:set_width(8)
+memwidget:set_height(10)
+memwidget:set_vertical(true)
+memwidget:set_background_color("#494B4F")
+memwidget:set_border_color(nil)
+memwidget:set_color({ type = "linear", from = { 0, 0 }, to = { 10,0 }, stops = { {0, "#AECF96"}, {0.5, "#88A175"}, {1, "#FF5656"}}})
+-- Register widget
+vicious.register(memwidget, vicious.widgets.mem, "$1", 13)
+
+-- Initialize widget
+memtxtwidget = wibox.widget.textbox()
+-- Register widget
+vicious.register(memtxtwidget, vicious.widgets.mem, "$2MB", 13)
+
+batterywidget = wibox.widget.textbox()
+hlcolor = "#eedddd"
+vicious.register(batterywidget, vicious.widgets.bat, "<span color='" .. hlcolor .. "'> ⌁$2($1$3) </span>",67,"BAT0")
+
+tempwidget = wibox.widget.textbox()
+vicious.register(tempwidget, vicious.widgets.thermal, "$1° ",37,"thermal_zone0")
+
+-- network widget
+netwidget = wibox.widget.textbox()
+vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9933">${wlp3s0 down_kb}kB/s</span> <span color="#7F9F7F">${wlp3s0 up_kb}kB/s </span>', 3)
 
 -- {{{ Wibox
--- Create a textclock widget
-mytextclock = awful.widget.textclock()
 
 -- Create a wibox for each screen and add it
 mywibox = {}
@@ -227,8 +268,14 @@ for s = 1, screen.count() do
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
+    right_layout:add(netwidget)
+    right_layout:add(cputxtwidget)
     right_layout:add(cpuwidget)
-    right_layout:add(mytextclock)
+    right_layout:add(tempwidget)
+    right_layout:add(memtxtwidget)
+    right_layout:add(memwidget)
+    right_layout:add(batterywidget)
+    right_layout:add(textclock)
     right_layout:add(mylayoutbox[s])
 
     -- Now bring it all together (with the tasklist in the middle)
