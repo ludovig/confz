@@ -162,6 +162,12 @@ vicious.register(cpufreq, vicious.widgets.cpufreq, function (widget, args)
                             end, 5, 'cpu0')
 
 -- Initialize widget
+cpuinf = wibox.widget.textbox()
+cpuinf.width = 10
+-- Register widget
+vicious.register(cpuinf, vicious.widgets.cpuinf, " ${cpu0 mhz}Mhz")
+
+-- Initialize widget
 memwidget = awful.widget.progressbar()
 -- Progressbar properties
 memwidget:set_width(8)
@@ -261,15 +267,15 @@ for s = 1, screen.count() do
 
     -- Widgets that are aligned to the left
     local left_layout = wibox.layout.fixed.horizontal()
-    left_layout:add(mylauncher)
-    left_layout:add(mytaglist[s])
     left_layout:add(mypromptbox[s])
+    left_layout:add(mytaglist[s])
 
     -- Widgets that are aligned to the right
     local right_layout = wibox.layout.fixed.horizontal()
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(netwidget)
     right_layout:add(cputxtwidget)
+    right_layout:add(cpuinf)
     right_layout:add(cpuwidget)
     right_layout:add(tempwidget)
     right_layout:add(memtxtwidget)
