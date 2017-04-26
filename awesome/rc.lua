@@ -109,8 +109,8 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "m", "n", "t", "g", "w", "'", ",", ".", ";" },
-    layout = { layouts[3], layouts[2], layouts[2], layouts[2], layouts[2], layouts[3], layouts[3], layouts[3], layouts[3] }
+    names = { "g", "m", "n", "t", "w", "'", ",", ".", ";" },
+    layout = { layouts[3], layouts[3], layouts[2], layouts[2], layouts[2], layouts[3], layouts[3], layouts[3], layouts[3] }
     }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -395,8 +395,7 @@ for s = 1, screen.count() do
    keynumber = math.min(9, math.max(#tags[s], keynumber));
 end
 
-tagkeys={ "m", "n", "t", "g", "w", "'", ",", ".", ";" }
--- tagkeys={"w", "n", "t", "à", "x", "/", ",", ".", ";"}
+tagkeys={ "g", "m", "n", "t", "w", "'", ",", ".", ";" }
 for i = 1, keynumber do
     globalkeys = awful.util.table.join(globalkeys,
         awful.key({ modkey }, tagkeys[i],
