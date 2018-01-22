@@ -48,4 +48,4 @@ setopt nobeep							 # dont beep
 
 # Shell Emulation
 setopt csh_null_glob       # silently remove non matching patterns
-setopt csh_junkie_quotes   # unescaped newlines will cause error message
+#setopt csh_junkie_quotes   # unescaped newlines will cause error message
