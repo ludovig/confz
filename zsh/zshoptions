@@ -10,7 +10,7 @@ setopt autonamedirs        # all directories parameters available as bookmarks
 setopt autolist            # automatically show list of choices on first request
 setopt automenu            # and switch between choices on second request
 setopt nolistambiguous     # unambiguous completion and show list in one request
-setopt listrowsfirst       # order list by row instead of column
+#setopt listrowsfirst       # order list by row instead of column
 
 # Expansion and Globbing
 setopt extendedglob        # use of #, ~, ^ in globbing
@@ -23,8 +23,8 @@ setopt histignorealldups   # remove from history identical commands
 setopt histignorespace     # do not record lines starting with a space
 setopt histsavenodups      # don't save more than once identical commands
 setopt histreduceblanks    # do not save superfluous blanks in history
-#setopt histverify          # prompt for confirmation when using history
-#setopt sharehistory        # share history between shells
+setopt histverify          # prompt for confirmation when using history
+setopt sharehistory        # share history between shells
 setopt incappendhistory    # immediately append command to history file
 
 # Input/Output
@@ -43,4 +43,4 @@ setopt prompt_subst        # dynamic prompt
 
 # Shell Emulation
 setopt csh_null_glob       # silently remove non matching patterns
-
+setopt csh_junkie_quotes   # unescaped newlines will cause error message
