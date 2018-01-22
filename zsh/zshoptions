@@ -2,7 +2,7 @@
 setopt autocd              # implicit cd when command is a directory
 setopt autopushd           # automatically push directories to the stack
 setopt cdablevars          # cd to a bookmark is possible without adding ~
-setopt pushdignoredups     # don't push multiple copies of a directory in stack
+setopt pushdignoredups     # dont push multiple copies of a directory in stack
 setopt pushdminus          # swap meaning of + and - when cd in stack
 
 # Completion
@@ -18,10 +18,12 @@ setopt extendedglob        # use of #, ~, ^ in globbing
 # History
 setopt extendedhistory     # record command date and duration
 setopt nohistbeep          # no beep on end of history
+setopt histallowclobber    # allow history reference to clobber
 setopt histfindnodups      # do not show duplicate commands on a search
 setopt histignorealldups   # remove from history identical commands
 setopt histignorespace     # do not record lines starting with a space
-setopt histsavenodups      # don't save more than once identical commands
+setopt histnofunctions     # remove function definitions from the history list
+setopt histsavenodups      # dont save more than once identical commands
 setopt histreduceblanks    # do not save superfluous blanks in history
 setopt histverify          # prompt for confirmation when using history
 setopt sharehistory        # share history between shells
@@ -40,6 +42,9 @@ setopt checkjobs           # report jobs status on exit
 
 # Prompting
 setopt prompt_subst        # dynamic prompt
+
+# Zle
+setopt nobeep							 # dont beep
 
 # Shell Emulation
 setopt csh_null_glob       # silently remove non matching patterns

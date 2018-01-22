@@ -29,7 +29,7 @@ function chpwd() {
 trap "print; print '$fg[red]'ouch; return" INT
 
 TRAPEXIT() {
-	if [[ ! -o login ]]; then
+	if [[ ! -o login && -r ~/.zlogout ]]; then
 		. ~/.zlogout
 	fi
 }
