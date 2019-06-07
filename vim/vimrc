@@ -13,8 +13,10 @@ Bundle 'gmarik/vundle'
 "
 " My Bundles here:
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
+"Bundle 'L9'
+"Bundle 'FuzzyFinder'
+Bundle 'yegappan/mru'
+"Bundle 'atom/fuzzy-finder'
 Bundle 'AutoComplPop'
 Bundle 'shawncplus/phpcomplete.vim'
 "Bundle 'msanders/snipmate.vim'
@@ -23,6 +25,15 @@ Bundle 'mikewest/vimroom'
 Bundle 'taxilian/VimDebugger'
 Bundle 'rking/ag.vim'
 Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
+"Bundle 'shawncplus/phpcomplete.vim'
+""Bundle 'msanders/snipmate.vim'
+"Bundle 'tpope/vim-surround'
+"Bundle 'mikewest/vimroom'
+"Bundle 'taxilian/VimDebugger'
+"Bundle 'rking/ag.vim'
+"Bundle 'mileszs/ack.vim'
+"Bundle 'webastien/vim-ctags'
 
 filetype plugin indent on      " required!
 
@@ -58,7 +69,14 @@ set ai
 set smartindent
 
 " WildMode
+set noignorecase
 set wildmode=list:longest,list:full
+set wildoptions=tagfile
+
+" Swap files
+set backupdir=/tmp//
+set directory=/tmp//
+set undodir=/tmp//
 
 " Some more tuning
 set backspace=start,indent,eol " Normal delete behavior
@@ -89,10 +107,10 @@ nnoremap é <C-y>;
 " Tag navigation
 nnoremap <Tab> <C-i>
 nnoremap <S-Tab> <C-o>
-nnoremap <CR> <C-]>
+"nnoremap <CR> <C-]>
+nnoremap <CR> g<C-]>
 "noremap <Return> <C-]>
 " Save and Quit commands
-nnoremap <Leader>j :w<CR>
 nnoremap <Leader>s :w<CR>
 nnoremap <Leader>q :q<CR>
 " Completion commands
@@ -111,8 +129,8 @@ nnoremap <Leader>l <C-W>l
 map Q gq
 
 """ Abbreviations
-iab since @since <C-R>=strftime("%Y-%m-%d")<CR>
-iab aut @author Ludovic Vigouroux <ludovicv@theodo.fr>
+iab since @since  <C-R>=strftime("%Y-%m-%d")<CR>
+iab aut @author Ludovic Vigouroux <ludo@mundoludo.fr>
 
 
 """ Auto Commands
@@ -151,24 +169,22 @@ endif
 
 
 """ Fuzzy Finder
-nnoremap <silent> <Leader>f :FufFile **/<CR>
-nnoremap <silent> <Leader>i :FufFile <CR>
-nnoremap <silent> <Leader>a :FufFileWithCurrentBufferDir<CR>
-nnoremap <silent> <Leader>e :FufMruFile<CR>
+set wcm=<C-Z>
+nnoremap <Leader>i :e<Space><C-Z>
+nnoremap <Leader>a :e<Space>%:h<C-Z>
+cnoremap <C-w> <C-w><C-w>
+nnoremap <silent> <Leader>e :Mru<CR>
 nnoremap <silent> <Leader>b :FufBuffer<CR>
-nnoremap <silent> <Leader>t :FufTag<CR>
-"nnoremap <silent> <Leader>m :FufChangeList<CR>
 nnoremap <silent> <Leader>w :FufJumpList<CR>
 nnoremap <silent> <Leader>u :FufLine<CR>
-nnoremap <silent> <Leader>g :FufMruCmd<CR>
+nnoremap <Leader>t :tj<Space>
+nnoremap <Leader>j :tj<Space>
+"nnoremap <silent> <Leader>g :FufMruCmd<CR>
 nnoremap <silent> <Leader>r :FufTagWithCursorWord<CR>
 nnoremap <silent> <Leader>d :FufDir<CR>
-nnoremap <silent> <Leader>y :FufDirWithCurrentBufferDir<CR>
-let g:fuf_modesDisable = []
-"let g:fuf_ignoreCase = 0
-let g:fuf_maxMenuWidth = 120
-let g:fuf_keyOpenVsplit = "<CR>"
-let g:fuf_keyOpen = "<Leader>"
+nnoremap <silent> <Leader>n :TagbarToggle<CR>
+let g:fuf_ignoreCase = 0
+
 
 """ Ag & Ack
 nnoremap <silent> <Leader>m :Ack <C-R><C-W><CR>
@@ -193,7 +209,8 @@ function! Tags(withlib)
   else
     let exclude = "--exclude=".getcwd()."/lib/vendor --append "
   endif
-  let result = system('ctags --PHP-kinds=+cf -R -f .vimtags --exclude="*.js" --exclude=cache --exclude=log --totals '. exclude . getcwd())
+"""  let result = system('ctags --languages=php --fields=+aimS --php-kinds=cdfint -R -f .vimtags --exclude="*.js" --exclude=cache --exclude=log --totals '. exclude . getcwd())
+  let result = system('ctags --languages=php --fields=+imS --php-kinds=cfv -R -f .vimtags --exclude="*.js" --exclude=cache --exclude=log --totals '. exclude . getcwd())
   echo result
 endfunction
 
