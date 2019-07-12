@@ -16,16 +16,19 @@ inoremap <buffer> ' ''<LEFT>
 ia <buffer> pf <CR><UP>  public function
 ia <buffer> spf <CR><UP>  static public function
 ia <buffer> php <?php ?><Left><Left><Left>
-ia <buffer> <silent> vd var_dump();<Left><Left><C-R>=Eatchar('\s')<CR>
-ia <buffer> <silent> vdc var_dump(<C-v>"coucou<C-v>");
-ia <buffer> <silent> vdp var_dump(<C-v>"prout<C-v>");
+ia <buffer> <silent> vd dump();<Left><Left><C-R>=Eatchar('\s')<CR>
+ia <buffer> <silent> vdc dump(<C-v>"coucou<C-v>");
+ia <buffer> <silent> vdt dump(<C-v>"tulipe<C-v>");
+ia <buffer> <silent> d dump();<Left><Left><C-R>=Eatchar('\s')<CR>
+ia <buffer> <silent> dc dump(<C-v>"coucou<C-v>");
+ia <buffer> <silent> dt dump(<C-v>"tulipe<C-v>");
 ia <buffer> <silent> __ __()<Left><C-R>=Eatchar('\s')<CR>
 
 " }}} Abbreviations for most used typing
 
 " {{{ Special commands for Fuzzy finder
 
-nnoremap <buffer> <Leader>n :FufLine ;function;<CR>
+"nnoremap <buffer> <Leader>n :FufLine ;function;<CR>
 
 " }}} Special commands for Fuzzy finder
 

@@ -33,11 +33,14 @@ alias v=$PAGER
 alias -g V="| $PAGER"
 alias btar='tar xvjf'
 alias gtar='tar xvzf'
-alias sf='php symfony'
 alias sfack='ack --ignore-dir=build --ignore-dir=doc --ignore-dir=cache --ignore-dir=log --ignore-dir=.git --ignore-file=is:.vimtags --ignore-file=is:autoload_classmap.php --type=nosql'
 alias gdb='gdb -q'
 alias dus="du -shc *(/)"
 alias df='df -h'
+# php & symfony
+alias sf='php bin/console'
+alias comp='composer.phar'
+alias composer='composer.phar'
 
 # unison and ssh
 alias unison=/usr/bin/unison-2.27
