@@ -33,12 +33,14 @@ alias v=$PAGER
 alias -g V="| $PAGER"
 alias btar='tar xvjf'
 alias gtar='tar xvzf'
-alias sfack='ack --ignore-dir=build --ignore-dir=doc --ignore-dir=cache --ignore-dir=log --ignore-dir=.git --ignore-file=is:.vimtags --ignore-file=is:autoload_classmap.php --type=nosql'
+alias sfack='ack --ignore-dir=build --ignore-dir=doc --ignore-dir=cache --ignore-dir=log --ignore-dir=.git --ignore-file=is:tags --ignore-file=is:.vimtags --ignore-file=is:autoload_classmap.php --type=nosql'
+alias jsack='ack --ignore-dir=nodes_modules --ignore-file=is:tags --ignore-dir=.git'
 alias gdb='gdb -q'
 alias dus="du -shc *(/)"
 alias df='df -h'
 # php & symfony
 alias sf='php bin/console'
+alias -g cc='c:c'
 alias comp='composer.phar'
 alias composer='composer.phar'
 

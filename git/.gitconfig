@@ -1,0 +1,14 @@
+[user]
+	email = ludo@mundoludo.fr
+	name = Ludovic Vigouroux
+[alias]
+	co = checkout
+	b = branch
+	ci = commit
+	s = status
+	d = diff
+	l = log
+	a = all
+	la = log -1 HEAD
+[core]
+	excludesfile = /home/mundoludo/.gitignore

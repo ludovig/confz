@@ -107,7 +107,6 @@ cnoremap ❤ <Esc>
 inoremap ♥ <Esc>
 vnoremap ♥ <Esc>
 cnoremap ♥ <Esc>
-nnoremap <Leader>c :
 " Pager
 nnoremap ♥ <C-d>
 nnoremap è <C-e>;
@@ -178,23 +177,25 @@ endif
 " FZF
 set rtp+=~/.fzf
 
-""" Fuzzy Finder
+""" Leader Mapping
 set wcm=<C-Z>
-"nnoremap <Leader>i :e<Space><C-Z>
 nnoremap <Leader>i :Files<CR>
 nnoremap <Leader>a :e<Space>%:h<C-Z>
-cnoremap <C-w> <C-w><C-w>
 nnoremap <silent> <Leader>e :History<CR>
+nnoremap <Leader>o :Files<Space>%:h<C-Z><CR>
+nnoremap <Leader>x :e<Space><C-Z>
+nnoremap <Leader>c :
+nnoremap <silent> <Leader>d :Ag<CR>
+cnoremap <C-w> <C-w><C-w>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>w :FufJumpList<CR>
-nnoremap <silent> <Leader>u :BLines<CR>
-nnoremap <silent> <Leader>f :Lines<CR>
+nnoremap <silent> <Leader>f :BLines<CR>
+nnoremap <silent> <Leader>u :Lines<CR>
 "nnoremap <Leader>t :tj<Space>
 "nnoremap <Leader>j :tj<Space>
 nnoremap <Leader>t :Tags<CR>
 "nnoremap <silent> <Leader>g :FufMruCmd<CR>
 "nnoremap <silent> <Leader>r :FufTagWithCursorWord<CR>
-nnoremap <silent> <Leader>d :Ag<CR>
 nnoremap <silent> <Leader>n :BTags<CR>
 let g:fuf_ignoreCase = 0
 
@@ -223,7 +224,7 @@ function! Tags(withlib)
     let exclude = "--exclude=".getcwd()."/lib/vendor --append "
   endif
 """  let result = system('ctags --languages=php --fields=+aimS --php-kinds=cdfint -R -f .vimtags --exclude="*.js" --exclude=cache --exclude=log --totals '. exclude . getcwd())
-  let result = system('ctags --languages=php --fields=+imS-a --php-kinds=cfvi -R -f .vimtags --exclude="*.js" --exclude=cache --exclude=log --totals '. exclude . getcwd())
+  let result = system('ctags --languages=php --fields=+imS-a --php-kinds=cfvit -R -f .vimtags --exclude="*.js" --exclude=var --totals '. exclude . getcwd())
   echo result
 endfunction
 
