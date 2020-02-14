@@ -45,7 +45,7 @@ alias comp='composer.phar'
 alias composer='composer.phar'
 
 # unison and ssh
-alias unison=/usr/bin/unison-2.27
+#alias unison=/usr/bin/unison-2.27
 
 # light urxvt
 lurxvt=urxvtc

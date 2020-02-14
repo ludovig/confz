@@ -46,8 +46,8 @@ let g:ackprg="ack --ignore-dir=doc --ignore-dir=cache --ignore-dir=log --type=no
 """ Options
 " Colors
 syntax on
-"set background=dark
-set background=light
+set background=dark
+"set background=light
 colorscheme solarized
 let g:lightline = {
     \ 'colorscheme': 'solarized'
@@ -83,9 +83,9 @@ set wildmode=list:longest,list:full
 set wildoptions=tagfile
 
 " Swap files
-set backupdir=$TMPDIR
-set directory=$TMPDIR
-set undodir=$TMPDIR
+set backupdir=/tmp
+set directory=/tmp
+set undodir=/tmp
 
 " Some more tuning
 set backspace=start,indent,eol " Normal delete behavior
