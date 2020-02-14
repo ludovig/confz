@@ -52,6 +52,7 @@ colorscheme solarized
 let g:lightline = {
     \ 'colorscheme': 'solarized'
     \ }
+hi Normal ctermbg=None
 
 " Unicode
 set encoding=utf-8
@@ -60,7 +61,7 @@ set fileencoding=utf-8
 " Show some informations
 set ruler
 set laststatus=2
-set number
+set nonumber
 
 " Search
 set incsearch
