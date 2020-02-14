@@ -213,9 +213,8 @@ assign [class="Firefox"] m
 assign [class="Gvim"] n
 
 # Default apps
-#exec xcompmgr &
-#exec xplanet --transparency --projection rectangular -longitude 2 -latitude 50 &
-#exec urxvtd
+exec xcompmgr & devilspie -a & 
+exec xplanet --transparency --projection rectangular -longitude 2 -latitude 50 &
+exec urxvtd -q -f -o && urxvtc --loginShell
 exec firefox-bin
 exec gvim
-exec urxvtc
