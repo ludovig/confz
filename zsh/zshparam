@@ -22,7 +22,7 @@ TIMEFMT="%J %*Et %*Uu %*Sk %P %MKb %I/%O"
 watch=all
 
 # do not allow everyone but me to read, write or execute newly created files
-umask 077
+umask 027
 
 #───────────────────────────────────────────────────────────────────────
 # global environnement parameters
