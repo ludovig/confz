@@ -182,7 +182,7 @@ set rtp+=~/.fzf
 """ Leader Mapping
 set wcm=<C-Z>
 nnoremap <Leader>i :Files<CR>
-nnoremap <Leader>a :e<Space>%:h<C-Z>
+nnoremap <Leader>a :e<Space>%:p:h<C-Z><C-Z>
 nnoremap <silent> <Leader>e :History<CR>
 nnoremap <Leader>o :Files<Space>%:h<C-Z><CR>
 nnoremap <Leader>x :e<Space><C-Z>
