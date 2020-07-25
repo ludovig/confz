@@ -35,6 +35,7 @@ if [[ $OSTYPE == darwin* ]]; then
 else
   [[ -z $TMUX ]] && export TERM=rxvt-unicode || export TERM=screen-256color
 fi
+export PASSWORD_STORE_X_SELECTION=primary
 
 #───────────────────────────────────────────────────────────────────────
 # local environnement parameters

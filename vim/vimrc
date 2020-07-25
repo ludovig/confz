@@ -30,6 +30,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'pangloss/vim-javascript'
 Bundle 'itchyny/lightline.vim'
 Bundle 'junegunn/fzf.vim'
+Bundle 'nvie/vim-flake8'
 "Bundle 'weynhamz/vim-plugin-minibufexpl'
 "Bundle 'shawncplus/phpcomplete.vim'
 ""Bundle 'msanders/snipmate.vim'
@@ -144,6 +145,7 @@ iab aut @author Ludovic Vigouroux <ludo@mundoludo.fr>
 
 """ Auto Commands
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd BufWritePost *.py call Flake8()
 
 "Trim the blank off an end of line
 autocmd BufWritePost * :%s/\s\+$//e
