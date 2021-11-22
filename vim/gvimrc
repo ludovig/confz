@@ -1,3 +1,7 @@
 set guifont=Inconsolata\ Bold\ 12
 set background=light
 set number
+set noerrorbells
+set vb t_vb=
+au GUIEnter * set t_vb=
+set belloff=all

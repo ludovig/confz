@@ -33,7 +33,7 @@ alias v=$PAGER
 alias -g V="| $PAGER"
 alias btar='tar xvjf'
 alias gtar='tar xvzf'
-alias sfack='ack --ignore-dir=build --ignore-dir=doc --ignore-dir=cache --ignore-dir=log --ignore-dir=.git --ignore-file=is:tags --ignore-file=is:.vimtags --ignore-file=is:autoload_classmap.php --type=nosql'
+alias sfack='ack --ignore-dir=build --ignore-dir=doc --ignore-dir=cache --ignore-dir=log --ignore-dir=logs --ignore-dir=var --ignore-dir=.git --ignore-dir=bucket-cache --ignore-dir=importer --ignore-dir=tools --ignore-file=is:tags --ignore-file=is:.vimtags --ignore-file=is:autoload_classmap.php --ignore-file=is:.phpunit.result.cache --ignore-file=is:.php7-cs-fixer.cache --ignore-file=is:.phpcs-cache --type=nosql --type=nohtml --type=nosvg --type=nojson --ignore-file=is:phpstan.phar --ignore-file=is:.php_cs.cache --ignore-file=is:phpstan-baseline-api.neon --ignore-file=is:autoload_static.php --ignore-file=is:.php8-cs-fixer.cache --ignore-file=is:report.xml --ignore-file=is:.php-cs-fixer.cache'
 alias jsack='ack --ignore-dir=nodes_modules --ignore-file=is:tags --ignore-dir=.git'
 alias gdb='gdb -q'
 alias dus="du -shc *(/)"

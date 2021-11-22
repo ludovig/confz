@@ -50,6 +50,10 @@ urxvt*fadeColor   : rgba:0000/0000/0000/0000
 urxvt*background  : rgba:1111/1111/2222/FFFF
 urxvt*foreground  : #EEEEEE
 urxvt*transparent : false
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-X: eval:selection_to_clipboard
+URxvt.iso14755: false
+URxvt.iso14755_52: false
 
 !*font        : xft:Source Code Pro:antialias=true:hinting=1:hintstyle=hintfull:dpi=96:weight=180
 !*font        : xft:Anonymous Pro:antialias=true:hinting=1:hintstyle=hintfull:dpi=96:weight=200

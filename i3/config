@@ -215,5 +215,6 @@ assign [class="VirtualBox Machine"] 1
 
 # Default apps
 exec xcompmgr & devilspie -a &
-exec xplanet --transparency --projection rectangular -longitude 2 -latitude 50 &
+#exec xplanet --transparency --projection rectangular -geometry 1800x900 -longitude 40 &
+exec xplanet --transparency -radius 90 -longitude -20 -latitude 0 -center +720+1250&
 exec urxvtd -q -f -o && urxvtc --loginShell
