@@ -1,6 +1,6 @@
 # shortcut builtins
 alias g='cd'
-alias q='bye'
+alias qq='bye'
 alias d='dirs -v'
 alias h='history -d'
 alias m='mv -v'
