@@ -1,0 +1,9 @@
+fn - j : yabai -m window --focus stack.next || yabai -m window --focus south
+fn - k : yabai -m window --focus stack.prev || yabai -m window --focus north
+fn - h : yabai -m window --focus west
+fn - l : yabai -m window --focus east
+
+fn - g : yabai -m space --focus 1
+fn - m : yabai -m space --focus 2
+fn - n : yabai -m space --focus 3
+fn - 4 : yabai -m space --focus 4
