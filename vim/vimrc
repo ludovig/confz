@@ -4,43 +4,42 @@ set nocompatible
 
 """ Vundle (Plugin Manager)
 filetype off                   " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-"
-" My Bundles here:
-Bundle 'altercation/vim-colors-solarized'
-"Bundle 'L9'
-"Bundle 'FuzzyFinder'
-Bundle 'yegappan/mru'
-Bundle 'kien/ctrlp.vim'
-"Bundle 'atom/fuzzy-finder'
-Bundle 'AutoComplPop'
-Bundle 'shawncplus/phpcomplete.vim'
-"Bundle 'msanders/snipmate.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'mikewest/vimroom'
-Bundle 'taxilian/VimDebugger'
-"Bundle 'rking/ag.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'pangloss/vim-javascript'
-Bundle 'itchyny/lightline.vim'
-Bundle 'junegunn/fzf.vim'
-Bundle 'nvie/vim-flake8'
-"Bundle 'weynhamz/vim-plugin-minibufexpl'
-"Bundle 'shawncplus/phpcomplete.vim'
-""Bundle 'msanders/snipmate.vim'
-"Bundle 'tpope/vim-surround'
-"Bundle 'mikewest/vimroom'
-"Bundle 'taxilian/VimDebugger'
-"Bundle 'rking/ag.vim'
-"Bundle 'mileszs/ack.vim'
-"Bundle 'webastien/vim-ctags'
+Plugin 'VundleVim/Vundle.vim'
 
+" My Bundles here:
+Plugin 'altercation/vim-colors-solarized'
+"Plugin 'L9'
+"Plugin 'FuzzyFinder'
+Plugin 'yegappan/mru'
+Plugin 'kien/ctrlp.vim'
+"Plugin 'atom/fuzzy-finder'
+Plugin 'AutoComplPop'
+Plugin 'shawncplus/phpcomplete.vim'
+"Plugin 'msanders/snipmate.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'mikewest/vimroom'
+Plugin 'taxilian/VimDebugger'
+"Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'pangloss/vim-javascript'
+Plugin 'itchyny/lightline.vim'
+Plugin 'junegunn/fzf.vim'
+Plugin 'nvie/vim-flake8'
+"Plugin 'weynhamz/vim-plugin-minibufexpl'
+"Plugin 'shawncplus/phpcomplete.vim'
+""Plugin 'msanders/snipmate.vim'
+"Plugin 'tpope/vim-surround'
+"Plugin 'mikewest/vimroom'
+"Plugin 'taxilian/VimDebugger'
+"Plugin 'rking/ag.vim'
+"Plugin 'mileszs/ack.vim'
+"Plugin 'webastien/vim-ctags'
+call vundle#end()
 filetype plugin indent on      " required!
 
 let g:ackprg="ack --ignore-dir=doc --ignore-dir=cache --ignore-dir=log --type=nosql -H --nocolor --nogroup --column"
@@ -145,7 +144,7 @@ iab aut @author Ludovic Vigouroux <ludo@mundoludo.fr>
 
 """ Auto Commands
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd BufWritePost *.py call Flake8()
+"autocmd BufWritePost *.py :silent call flake8#Flake8()
 
 "Trim the blank off an end of line
 autocmd BufWritePost * :%s/\s\+$//e
