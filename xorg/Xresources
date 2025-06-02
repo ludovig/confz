@@ -48,6 +48,7 @@ urxvt*depth       : 32
 urxvt*fading        : 80
 urxvt*fadeColor   : rgba:0000/0000/0000/0000
 urxvt*background  : rgba:1111/1111/2222/FFFF
+!urxvt*background  : rgba:FDFD/E6E6/E3E3/FFFF
 urxvt*foreground  : #EEEEEE
 urxvt*transparent : false
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard

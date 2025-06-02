@@ -48,4 +48,4 @@ fi
 #  exec twm
 #fi
 
-#exec awesome
+exec i3

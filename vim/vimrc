@@ -40,6 +40,7 @@ Plugin 'tikhomirov/vim-glsl'
 "Plugin 'rking/ag.vim'
 "Plugin 'mileszs/ack.vim'
 "Plugin 'webastien/vim-ctags'
+ Plugin 'udalov/kotlin-vim'
 call vundle#end()
 filetype plugin indent on      " required!
 
@@ -107,6 +108,9 @@ let mapleader = "\<Space>" " Space is so accessible
 inoremap ❤ <Esc>
 vnoremap ❤ <Esc>
 cnoremap ❤ <Esc>
+inoremap ♥ <Esc>
+vnoremap ♥ <Esc>
+cnoremap ♥ <Esc>
 inoremap ♥ <Esc>
 vnoremap ♥ <Esc>
 cnoremap ♥ <Esc>

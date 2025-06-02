@@ -2,8 +2,21 @@
 autoload -Uz compinit
 compinit
 
-# auto-fu
-zstyle ':auto-fu:highlight' completion fg=black,bold
-zstyle ':auto-fu:highlight' completion/one fg=white,bold,underline
-zstyle ':auto-fu:var' track-keymap-skip opp
-zstyle ':auto-fu:var' autoable-function/skiplbuffers '([a-z])'
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' file-sort modification
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' ignore-parents parent pwd
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' matcher-list '' '' '' ''
+#zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} r:|[._-]=** r:|=**' 'm:{[:lower:]}={[:upper:]} m:{[:lower:][:upper:]}={[:upper:][:lower:]} r:|[._-]=* r:|=* l:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' max-errors 2 numeric
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' special-dirs true
+zstyle ':completion:*' verbose true
