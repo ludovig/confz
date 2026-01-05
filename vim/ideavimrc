@@ -1,0 +1,13 @@
+map ♥ <Esc>
+inoremap ♥ <Esc>
+vnoremap ♥ <Esc>
+cnoremap ♥ <Esc>
+
+let mapleader = "\<Space>" " Space is so accessible
+nmap <Leader>f <Action>(com.fuzzyfilesearch.FuzzyFindFile)
+nmap <Leader>e <Action>(com.fuzzyfilesearch.FuzzyFindHistory)
+
+"map [[ ?{<CR>w99[{
+"map ][ /}<CR>b99]}
+"map ]] j0[[%/{<CR>
+"map [] k$][%?}<CR>
