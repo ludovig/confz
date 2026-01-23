@@ -5,7 +5,10 @@ cnoremap ♥ <Esc>
 
 let mapleader = "\<Space>" " Space is so accessible
 nmap <Leader>f <Action>(com.fuzzyfilesearch.FuzzyFindFile)
-nmap <Leader>e <Action>(com.fuzzyfilesearch.FuzzyFindHistory)
+nmap <Leader>j <Action>(com.fuzzyfilesearch.FuzzyFindHistory)
+nmap <Leader>b <Action>(com.fuzzyfilesearch.FuzzyFindBuffer)
+nmap <Leader>e <Action>(RecentFiles)
+nmap <Enter> <Action>(GotoDeclaration)
 
 "map [[ ?{<CR>w99[{
 "map ][ /}<CR>b99]}
